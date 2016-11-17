@@ -18,3 +18,6 @@
 const Route = use('Route')
 
 Route.on('/').render('welcome')
+
+Route.get('/images','ImageController.read')
+Route.post('/images/create','ImageController.add')
