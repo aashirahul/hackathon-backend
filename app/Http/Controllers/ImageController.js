@@ -10,7 +10,7 @@ class ImageController {
 	}
 
 	* add(request,response){
-		let data = request.only('image_url')
+		let data = request.only('image_url','description')
 		let image = yield Image.create(data)
 		response.status(201).send('Image added')
 	}
@@ -29,6 +29,22 @@ class ImageController {
 		let image = yield Image.findBy('id',imageID)
 		response.status(200).json(image)
 
+	}
+
+	* remove(request,response){
+		let imageID = request.param('imageId')
+		let image = yield Image.findBy('id',imageID)
+		yield image.delete();
+		response.status(200).json('Image Deleted')
+	}
+
+	* edit(request,response){
+		let imageID = request.param('imageId')
+		let descrip = request.only('description')
+		let image = yield Image.findBy('id',imageID)
+		image.fill(descrip)
+		yield image.save()
+		response.status(201).send('description updated')
 	}
 
 }
