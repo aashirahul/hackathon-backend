@@ -1,5 +1,7 @@
 'use strict'
 
+const Image = use('App/Model/Image')
+
 class ImageController {
 
 	* read(request,response){
@@ -10,7 +12,7 @@ class ImageController {
 	* add(request,response){
 		let data = request.only('image_url')
 		let image = yield Image.create(data)
-		response.status(200).show('Image added')
+		response.status(200).send('Image added')
 	}
 
 }
