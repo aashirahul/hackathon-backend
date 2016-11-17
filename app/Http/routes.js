@@ -22,4 +22,5 @@ Route.on('/').render('welcome')
 Route.get('/images','ImageController.read')
 Route.post('/images/create','ImageController.add')
 Route.put('/images/like/:imageId','ImageController.addLike')
+Route.get('/images/:imageId','ImageController.readOne')
 
