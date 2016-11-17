@@ -10,7 +10,7 @@ class CommentsTableSchema extends Schema {
       table.timestamps()
       table.string('comment')
       table.integer('image_id').unsigned()
-      table.forgien('image_id').references('images.id')
+      table.foreign('image_id').references('images.id')
 
     })
   }

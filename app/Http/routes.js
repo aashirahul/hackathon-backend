@@ -29,5 +29,6 @@ Route.put('/images/edit/:imageId/','ImageController.edit')
 Route.delete('images/remove/:imageId','ImageController.remove')
 
 
-Route.post('/images/comments','CommentController.add')
+Route.get('/images/:imageId/comments','CommentController.read')
+Route.post('/images/:imageId/comments/create','CommentController.add')
 
