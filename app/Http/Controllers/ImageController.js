@@ -15,6 +15,10 @@ class ImageController {
 		response.status(200).send('Image added')
 	}
 
+	* addLike(request,response){
+		
+	}
+
 }
 
 module.exports = ImageController

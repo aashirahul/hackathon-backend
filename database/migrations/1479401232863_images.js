@@ -8,7 +8,8 @@ class ImagesTableSchema extends Schema {
     this.create('images', (table) => {
       table.increments()
       table.timestamps()
-      table.string('image_url') 
+      table.string('image_url')
+      table.integer('like')
     })
   }
 
