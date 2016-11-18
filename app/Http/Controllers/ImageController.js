@@ -26,7 +26,7 @@ class ImageController {
 	 
 
 
-	}
+	
 
 	* readOne(request,response){
 		let imageID = request.param('imageId')
