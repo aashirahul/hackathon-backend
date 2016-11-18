@@ -18,9 +18,7 @@ class ImageController {
 	* addLike(request,response){
 		let imageID = request.param('imageId')
 		let image = yield Image.findBy('id',imageID)
-		console.log(image.like)
 		image.like += 1;
-		console.log(image.like)
 		yield image.save();
 		response.status(201).send('Like Added')												
 		
