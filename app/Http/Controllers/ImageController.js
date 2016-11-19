@@ -35,10 +35,13 @@ class ImageController {
 	* remove(request,response){
 		let imageID = request.param('imageId')
 		let image = yield Image.findBy('id',imageID)
-		console.log(image);
+
 		if(image){
-			let comment = yield Comment.query().where('image_id',imageID).fetch()
-			yield comment.delete();
+			let comments = yield Comment.query().where('image_id',imageID).fetch()
+			console.log(comments);
+			for(var i = 0; i < coments.length; i++) {
+				yield comments[i].delete();
+			}
 			yield image.delete();
 			response.status(200).json(image)
 		} else {
