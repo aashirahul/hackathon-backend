@@ -23,11 +23,7 @@ class ImageController {
 		response.status(201).send('Like Added')												
 		
 	}
-	 
-
-
 	
-
 	* readOne(request,response){
 		let imageID = request.param('imageId')
 		let image = yield Image.findBy('id',imageID)
