@@ -37,9 +37,9 @@ class ImageController {
 		let image = yield Image.findBy('id',imageID)
 
 		if(image){
-			let comments = yield Comment.query().where('image_id',imageID).fetch()
+			let comments = yield Comment.query().where('image_id',imageID).fetch().value()
 			console.log(comments);
-			for(var i = 0; i < comments.value().length; i++) {
+			for(var i = 0; i < comments.length; i++) {
 				yield comments[i].delete();
 			}
 			yield image.delete();
