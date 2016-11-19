@@ -1,6 +1,7 @@
 'use strict'
 
 const Image = use('App/Model/Image')
+const Comment = use('App/Model/Comment')
 
 class ImageController {
 
@@ -34,8 +35,15 @@ class ImageController {
 	* remove(request,response){
 		let imageID = request.param('imageId')
 		let image = yield Image.findBy('id',imageID)
-		yield image.delete();
-		response.status(200).json(image)
+		if(image){
+			let comment = yield Comment.query().where('id',imageID).fetch()
+			yield comment.delete();
+			yield image.delete();
+			response.status(200).json(image)
+		} else {
+			response.status(401).json({error: "no such image exists"})
+		}
+		
 	}
 
 	* edit(request,response){
