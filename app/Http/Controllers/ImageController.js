@@ -36,7 +36,7 @@ class ImageController {
 		let imageID = request.param('imageId')
 		let image = yield Image.findBy('id',imageID)
 		if(image){
-			let comment = yield Comment.query().where('id',imageID).fetch()
+			let comment = yield Comment.query().where('image_id',imageID).fetch()
 			yield comment.delete();
 			yield image.delete();
 			response.status(200).json(image)
