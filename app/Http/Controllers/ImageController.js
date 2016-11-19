@@ -12,7 +12,7 @@ class ImageController {
 	* add(request,response){
 		let data = request.only('image_url','description')
 		let image = yield Image.create(data)
-		response.status(201).send('Image added')
+		response.status(201).json(image)
 	}
 
 	* addLike(request,response){
@@ -20,7 +20,7 @@ class ImageController {
 		let image = yield Image.findBy('id',imageID)
 		image.like += 1;
 		yield image.save();
-		response.status(201).send('Like Added')												
+		response.status(201).json(image)												
 		
 	}
 	
@@ -35,7 +35,7 @@ class ImageController {
 		let imageID = request.param('imageId')
 		let image = yield Image.findBy('id',imageID)
 		yield image.delete();
-		response.status(200).json('Image Deleted')
+		response.status(200).json(image)
 	}
 
 	* edit(request,response){
@@ -44,7 +44,7 @@ class ImageController {
 		let image = yield Image.findBy('id',imageID)
 		image.fill(descrip)
 		yield image.save()
-		response.status(201).send('description updated')
+		response.status(201).json(image)
 	}
 
 }
