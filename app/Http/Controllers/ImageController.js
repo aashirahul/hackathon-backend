@@ -35,13 +35,14 @@ class ImageController {
 	* remove(request,response){
 		let imageID = request.param('imageId')
 		let image = yield Image.findBy('id',imageID)
+		console.log(image);
 		if(image){
 			let comment = yield Comment.query().where('image_id',imageID).fetch()
 			yield comment.delete();
 			yield image.delete();
 			response.status(200).json(image)
 		} else {
-			response.status(401).json({error: "no such image exists"})
+			response.status(400).json({error: "no such image exists"})
 		}
 		
 	}
