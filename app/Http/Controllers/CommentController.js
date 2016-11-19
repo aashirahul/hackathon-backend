@@ -14,8 +14,8 @@ class CommentController {
 		let imageID = request.param('imageId')
 		let data = request.only('comment')
 		data.image_id = imageID;
-		let comment = yield Comment.create(data)
-		response.status(201).json(comment)
+		let comments = yield Comment.create(data)
+		response.status(201).json(comments)
 
 	}
 
